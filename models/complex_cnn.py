@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-class ComplexCNN(nn.Module):
+class J1J2ComplexCNNRegressor1D(nn.Module):
     """ Complex-Valued CNN No sign rule needed """
     def __init__(self, n_spins, depth_1=16, depth_2=32, kernel_size=3):
         super().__init__()

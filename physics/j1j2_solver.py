@@ -113,7 +113,7 @@ class QuantumJ1J2Solver:
         # Allow torch tensors as input
         if isinstance(theta, torch.Tensor):
             theta = theta.detach().cpu().numpy()
-            phi = phi.detach().cpu().numpy()
+            phi = phi.detach().cpu().numpy() #type: ignore
 
         def one_spin(th, ph):
             return np.array([
