@@ -38,7 +38,7 @@ def compute_local_energy_log(spins, model, J1, J2):
                 log_psi_prime = model(spins_prime)
             
             ratio = torch.exp(log_psi_prime - log_psi)
-            sign_fix = -1.0 if is_nn else 1.0 # Marshall Sign Rule
+            sign_fix = -1.0 if is_nn else 1.0 # Marshall Sign Rule Hard-Coded
             term = (J / 2.0) * ratio * sign_fix
             E_off += term * diff_mask.unsqueeze(1).float()
 

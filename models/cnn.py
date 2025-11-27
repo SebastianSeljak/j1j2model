@@ -13,7 +13,6 @@ class J1J2CNNRegressor1D(nn.Module):
         super().__init__()
         self.n_spins = n_spins
 
-        # Convolutional feature extractor over the spin chain
         self.conv = nn.Sequential(
             nn.Conv1d(in_channels=1, out_channels=depth_1, kernel_size=kernel_size, padding=1),
             nn.ELU(),
@@ -21,10 +20,8 @@ class J1J2CNNRegressor1D(nn.Module):
             nn.ELU()
         )
 
-        # Pool over the chain length (global average pooling)
         self.pool = nn.AdaptiveAvgPool1d(1)  # (B, 32, 1)
-
-        # Fully-connected head
+        
         self.fc = nn.Sequential(
             nn.Linear(depth_2, depth_2),
             nn.ReLU(),

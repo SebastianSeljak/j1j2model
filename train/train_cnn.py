@@ -15,7 +15,6 @@ def train_vmc_model(model_cls, energy_fn, J2_val, config):
     mean_hist = []
     std_hist = []
     print(f"Training {model_cls.__name__}...")
-    # 250 Epochs
     for epoch in range(1, config['n_epochs'] + 1):
         spins = mcmc_step(spins, model, n_steps=config['mcmc_steps'])
         
@@ -37,6 +36,7 @@ def train_vmc_model(model_cls, energy_fn, J2_val, config):
 
         optimizer.zero_grad()
         loss.backward()
+        
         # Gradient Clipping
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()

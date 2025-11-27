@@ -1,7 +1,13 @@
 import torch.nn as nn
 
 class J1J2ComplexCNNRegressor1D(nn.Module):
-    """ Complex-Valued CNN No sign rule needed """
+    """
+    1D Complex-valued CNN for spin chains.
+
+    Input:  (batch_size, 1, n_spins)
+    Output: (batch_size, 2) log-amplitude and phase
+    """
+    
     def __init__(self, n_spins, depth_1=16, depth_2=32, kernel_size=3):
         super().__init__()
         self.net = nn.Sequential(
